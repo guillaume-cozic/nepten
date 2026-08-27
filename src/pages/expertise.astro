@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const expertises = [
+  {
+    title: 'Acoustique sous-marine',
+    tagline: "Comprendre, analyser, améliorer l'acoustique des systèmes.",
+    text: "L'étude du bruit est la compétence principale du bureau d'études.",
+    points: [
+      'Étude des phénomènes de couplage hydromécanique',
+      'Traitement de signal acoustique (DAS, hydrophones)',
+      'Réduction de la signature acoustique',
+    ],
+    color: 'bg-wave',
+    image: '/images/das-signature.png',
+    imageAlt: "Mesure DAS : signature acoustique d'un navire et zone d'ombre",
+    caption: 'Signature acoustique de navire mesurée par fibre optique (DAS)',
+  },
+  {
+    title: 'Optimisation de profils portants',
+    tagline: "L'expérimental pour aller plus loin que la simulation.",
+    text: "L'équipe développe des solutions pour foils, dérives, safrans et pales d'hélice. Elle a notamment participé au projet « Du Carbone à l'Or » pour les JO 2024. Le tunnel hydrodynamique permet de valider les modèles numériques.",
+    points: [
+      "Conception et optimisation de foils, dérives et safrans",
+      "Pales d'hélice et appendices",
+      'Validation expérimentale des modèles numériques en tunnel hydrodynamique',
+    ],
+    color: 'bg-sand',
+    image: '/images/piv-vecteurs.png',
+    imageAlt: "Champ de vecteurs PIV autour d'un profil portant",
+    caption: "Champ de vitesse mesuré par PIV autour d'un profil portant",
+  },
+  {
+    title: 'Traitement et analyse de données',
+    tagline: 'Faire parler la donnée pour améliorer les systèmes physiques.',
+    text: "Une très forte expertise en traitement et analyse de données a été développée. La plateforme maritime capture les données AIS, radar et sonar.",
+    points: [
+      'Capture de données AIS, radar et sonar',
+      "Traitement des données de campagnes d'essais sur le plan d'eau",
+      'Analyse et valorisation des résultats',
+    ],
+    color: 'bg-coral',
+    image: '/images/plateforme-tim.png',
+    imageAlt: "Schéma de la plateforme Traitement de l'Information Maritime",
+    caption: "La plateforme « Traitement de l'Information Maritime »",
+  },
+  {
+    title: 'Stabilité',
+    tagline: 'Anticiper le comportement des systèmes en mer.',
+    text: "L'évolution en milieu marin implique nécessairement une étude de la stabilité des systèmes. NeptEN dispose d'un logiciel interne d'analyse de stabilité navale.",
+    points: [
+      'Stabilité des navires et systèmes marins',
+      "Logiciel interne d'analyse de stabilité navale",
+      'Études applicables à tout système flottant',
+    ],
+    color: 'bg-ocean',
+    image: '/images/calcoque-stabilite.png',
+    imageAlt: "Logiciel interne d'analyse de stabilité navale",
+    caption: "Le logiciel interne d'analyse de stabilité navale",
+  },
+];
+---
+
+<Base
+  title="Expertises"
+  description="Plus de 20 ans d'expérience en acoustique sous-marine, optimisation de profils portants, traitement de données et stabilité navale."
+  current="expertise"
+>
+  <PageHero
+    kicker="Plus de 20 ans d'expérience"
+    title="Expertises"
+    intro="Nos experts ont développé un panel de compétences très pointues sur divers sujets de recherche et d'innovation. L'équipe couple théorie et pratique pour résoudre diverses problématiques."
+  />
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl space-y-16 px-4 py-20 sm:px-6">
+      {expertises.map((e, idx) => (
+        <article class:list={['grid items-center gap-10 md:grid-cols-2', idx % 2 === 1 && 'md:[&>div:first-child]:order-2']}>
+          <div>
+            <span class:list={['block h-2 w-16 rounded-full', e.color]} aria-hidden="true"></span>
+            <h2 class="mt-5 text-3xl font-extrabold">{e.title}</h2>
+            <p class="mt-4 text-lg leading-relaxed text-navy">{e.text}</p>
+            <ul class="mt-6 space-y-3">
+              {e.points.map((point) => (
+                <li class="flex items-start gap-3">
+                  <span class:list={['mt-1.5 block h-3 w-3 shrink-0 rounded-full', e.color]} aria-hidden="true"></span>
+                  <span class="font-semibold">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded-3xl bg-foam p-6 md:p-8">
+            <img src={e.image} alt={e.imageAlt} class="block w-full rounded-2xl object-cover" loading="lazy" />
+            <p class="mt-3 text-sm font-semibold text-ocean">{e.caption}</p>
+            <p class="mt-5 border-t border-deep/15 pt-5 text-xl font-extrabold leading-snug">« {e.tagline} »</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white px-4">
+    <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
+      <h2 class="text-2xl font-extrabold text-white md:text-3xl">Une problématique à résoudre ?</h2>
+      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+        Contactez nos experts
+      </a>
+    </div>
+  </section>
+</Base>

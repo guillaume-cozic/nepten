@@ -1,0 +1,121 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const atouts = [
+  {
+    title: 'Localisation',
+    text: "Protégé au fond de la rade de Brest, devant l'École Navale, le plan d'eau est accessible toute l'année.",
+    image: '/images/carte-localisation.png',
+    alt: "Carte : l'École Navale à Lanvéoc, presqu'île de Crozon, rade de Brest",
+  },
+  {
+    title: 'Semi-rigides',
+    text: 'Des semi-rigides sont disponibles via la Marina de la marine, avec des pilotes qualifiés.',
+    image: '/images/semi-rigide.jpg',
+    alt: 'Semi-rigide en navigation en rade de Brest',
+  },
+  {
+    title: "Moyens de mise à l'eau",
+    text: "Travelift et cale de mise à l'eau permettent la mise à l'eau de tous types d'embarcations.",
+    image: '/images/travelift.jpg',
+    alt: "Le travelift de l'École Navale levant un navire",
+  },
+  {
+    title: 'Infrastructures portuaires et personnel',
+    text: "Pontons, bouées et professionnels qualifiés accompagnent chaque campagne d'essais.",
+    image: '/images/port-poulmic.jpg',
+    alt: 'Vue aérienne du port du Poulmic, pontons et bouées',
+  },
+  {
+    title: 'Détection acoustique sous-marine',
+    text: 'Le système DAS (fibre optique) mesure les signatures acoustiques des systèmes en essai.',
+    image: '/images/das-signature.png',
+    alt: "Signature acoustique d'un navire mesurée par DAS",
+  },
+  {
+    title: 'Traitement de la donnée',
+    text: "Une forte expertise en traitement de signal acoustique permet d'exploiter au mieux les résultats.",
+    image: '/images/traitement-signal.png',
+    alt: 'Signal acoustique temporel et spectrogramme temps-fréquence',
+  },
+];
+---
+
+<Base
+  title="Plan d'eau instrumenté en détection acoustique"
+  description="Un plan d'eau à Lanvéoc Poulmic, au fond de la rade de Brest, équipé d'une fibre optique DAS pour les mesures acoustiques sous-marines en conditions réelles."
+  current="plan-deau"
+>
+  <PageHero
+    kicker="Infrastructure expérimentale"
+    title="Plan d'eau instrumenté en détection acoustique"
+    intro="Idéalement situé et équipé, cet environnement permet de tester n'importe quel équipement et de récolter de la donnée en milieu marin. Notre équipe dispose d'une forte compétence en analyse et traitement de signal permettant d'exploiter au mieux les résultats des campagnes d'essai."
+  />
+
+  <!-- Contexte -->
+  <section class="bg-white">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:grid-cols-2">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-ocean">Un enjeu majeur</p>
+        <h2 class="mt-2 text-3xl font-extrabold">La discrétion acoustique</h2>
+        <p class="mt-6 text-lg leading-relaxed text-navy">
+          La discrétion acoustique constitue un enjeu majeur actuel. Le site se trouve à
+          <strong class="text-deep">Lanvéoc Poulmic</strong>, au fond de la rade de Brest. Des ressources
+          nautiques variées sont disponibles : cale de mise à l'eau, travelift, semi-rigides et équipe qualifiée.
+        </p>
+        <p class="mt-4 rounded-2xl border-l-4 border-wave bg-foam p-5 font-semibold leading-relaxed">
+          Le plan d'eau est désormais équipé d'une fibre optique permettant un grand nombre de mesures
+          acoustiques sous-marines (technologie DAS).
+        </p>
+      </div>
+      <div class="space-y-6">
+        <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/50">
+          <img
+            src="/images/ecole-navale-aerien.jpg"
+            alt="Vue aérienne de l'École Navale et du plan d'eau, rade de Brest"
+            class="block w-full object-cover"
+          />
+        </div>
+        <div class="rounded-3xl bg-deep p-4">
+          <img
+            src="/images/detection-acoustique.png"
+            alt="Principe de la détection acoustique sous-marine : source, hydrophone, traitement du signal, localisation"
+            class="block w-full"
+            loading="lazy"
+          />
+          <p class="mt-3 text-center text-sm font-bold text-foam">Écouter, détecter, localiser — la chaîne de détection acoustique</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Atouts -->
+  <section class="bg-foam">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-ocean">Moyens disponibles</p>
+      <h2 class="mt-2 text-3xl font-extrabold">Un environnement d'essais complet</h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {atouts.map((a, idx) => (
+          <article class="overflow-hidden rounded-3xl bg-white shadow-sm">
+            <img src={a.image} alt={a.alt} class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+            <div class="p-8 pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-wave font-extrabold text-deep">0{idx + 1}</span>
+              <h3 class="mt-5 text-lg font-extrabold">{a.title}</h3>
+              <p class="mt-3 leading-relaxed text-navy">{a.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4">
+    <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
+      <h2 class="text-2xl font-extrabold text-white md:text-3xl">Un équipement à tester en milieu marin ?</h2>
+      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+        Organisons une campagne
+      </a>
+    </div>
+  </section>
+</Base>

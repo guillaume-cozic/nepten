@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const projets = [
+  {
+    tag: 'Acoustique',
+    color: 'bg-wave',
+    title: "Anticipation des vibrations acoustiques d'un hydrofoil",
+    subtitle: 'Enjeux de discrétion acoustique',
+    text: "Étude sur la prédiction du bruit d'un appendice de drone. La méthodologie inclut la détermination des modes propres (ABAQUS), l'identification de la transition selon les angles d'incidence (XFOIL) et l'identification des fréquences d'amplification.",
+    points: ['Modes propres — ABAQUS', 'Transition laminaire/turbulent — XFOIL', "Fréquences d'amplification"],
+    images: [
+      { src: '/images/modes-propres.png', alt: "Les six premiers modes propres de l'hydrofoil" },
+      { src: '/images/simulation-foil.png', alt: "Simulation de l'écoulement autour d'un profil NACA 4412" },
+    ],
+  },
+  {
+    tag: 'CFD',
+    color: 'bg-sand',
+    title: 'Affinage de modèles CFD et prédiction de cavitation',
+    subtitle: 'Validation expérimentale de la simulation',
+    text: "Travail mené pour un fabricant de drones navals afin de valider expérimentalement sa modélisation CFD. La reproduction numérique du tunnel hydrodynamique a permis d'optimiser le modèle. Les essais ont déterminé précisément l'apparition de la cavitation sur modèles réduits.",
+    points: ['Reproduction numérique du tunnel', 'Essais sur modèles réduits', "Détermination précise de l'apparition de cavitation"],
+    images: [{ src: '/images/cavitation-essai.png', alt: 'Cavitation observée sur un profil en essai dans le tunnel' }],
+  },
+  {
+    tag: 'DAS',
+    color: 'bg-coral',
+    title: 'Identification de signature acoustique sous-marine',
+    subtitle: "Campagne d'essais en plan d'eau",
+    text: "Une campagne d'essais a été menée pour la détection acoustique d'un drone sous-marin développé en interne. La technologie DAS, via un câble en fibre optique, a permis de détecter la signature acoustique malgré les bruits environnementaux.",
+    points: ['Technologie DAS — fibre optique', 'Détection en environnement bruité', 'Drone sous-marin développé en interne'],
+    images: [{ src: '/images/drone-sous-marin.jpg', alt: "Le drone sous-marin en essai sur le plan d'eau" }],
+  },
+  {
+    tag: 'Stabilité',
+    color: 'bg-ocean',
+    title: "Stabilité d'une pompe flottante",
+    subtitle: 'Outil de calcul généralisable',
+    text: "Développement d'un outil déterminant la stabilité à partir des données du système : cylindre plein ou creux, masse volumique, positionnement. L'outil est applicable à n'importe quel cylindre flottant chargé avec un équipement quelconque.",
+    points: ['Cylindre plein ou creux', 'Masse volumique et positionnement', 'Généralisable à tout cylindre flottant chargé'],
+    images: [{ src: '/images/pompe-flottante.png', alt: 'Pompe flottante sur plateau circulaire (illustration)' }],
+  },
+];
+---
+
+<Base
+  title="Projets"
+  description="Un échantillon des prestations NeptEN : couplage hydroélastique, validation CFD, identification de signature acoustique par DAS, stabilité hydrodynamique."
+  current="projets"
+>
+  <PageHero
+    kicker="Portfolio"
+    title="Projets"
+    intro="En couplant théorie et pratique, nous parvenons à répondre à de nombreuses problématiques, notamment en acoustique. Nos équipes anticipent, détectent et corrigent les phénomènes vibratoires générant du bruit. Voici un échantillon des prestations réalisées."
+  />
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl space-y-10 px-4 py-20 sm:px-6">
+      {projets.map((p, idx) => (
+        <article class="grid gap-0 overflow-hidden rounded-3xl shadow-lg shadow-deep/10 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <div class="bg-foam p-8 md:p-10">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class:list={['px-3 py-1 text-xs font-bold uppercase tracking-widest text-deep', p.color === 'bg-ocean' ? 'bg-ocean text-white' : p.color]}>
+                {p.tag}
+              </span>
+              <span class="text-sm font-bold text-ocean">Projet 0{idx + 1}</span>
+            </div>
+            <h2 class="mt-4 text-2xl font-extrabold md:text-3xl">{p.title}</h2>
+            <p class="mt-1 font-semibold text-ocean">{p.subtitle}</p>
+            <p class="mt-5 leading-relaxed text-navy">{p.text}</p>
+            <div class:list={['mt-6 grid gap-4', p.images.length > 1 && 'sm:grid-cols-2']}>
+              {p.images.map((img) => (
+                <img src={img.src} alt={img.alt} class="block w-full rounded-2xl bg-white object-cover" loading="lazy" />
+              ))}
+            </div>
+          </div>
+          <div class="bg-deep p-8 text-white md:p-10">
+            <p class="text-xs font-bold uppercase tracking-widest text-wave">Points clés</p>
+            <ul class="mt-5 space-y-4">
+              {p.points.map((point) => (
+                <li class="flex items-start gap-3">
+                  <span class:list={['mt-1.5 block h-3 w-3 shrink-0 rounded-full', p.color]} aria-hidden="true"></span>
+                  <span class="text-sm font-semibold leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white px-4">
+    <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
+      <h2 class="text-2xl font-extrabold text-white md:text-3xl">Vous avez une problématique similaire ?</h2>
+      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+        Contactez-nous
+      </a>
+    </div>
+  </section>
+</Base>

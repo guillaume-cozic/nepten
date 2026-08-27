@@ -1,0 +1,124 @@
+---
+const { current = '' } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Accueil', key: 'accueil' },
+  { href: '/expertise', label: 'Expertise', key: 'expertise' },
+  { href: '/projets', label: 'Projets', key: 'projets' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
+];
+
+const infra = [
+  { href: '/tunnel-hydrodynamique', label: 'Tunnel hydrodynamique', key: 'tunnel' },
+  { href: '/plan-deau-instrumente-en-detection-acoustique', label: "Plan d'eau instrumenté", key: 'plan-deau' },
+  { href: '/banc-dessai-drone', label: 'Hexapode et Mur de vent', key: 'hexapode' },
+];
+
+const infraActive = infra.some((l) => l.key === current);
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-deep/90 text-white backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/images/logo-blanc.png" alt="NeptEN — Bureau d'études navales" class="h-20 w-auto" />
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
+      {links.slice(0, 2).map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+            current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10',
+          ]}
+          aria-current={current === link.key ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <div class="group relative">
+        <button
+          type="button"
+          class:list={[
+            'flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+            infraActive ? 'bg-wave text-deep' : 'group-hover:bg-white/10',
+          ]}
+        >
+          Infrastructures expérimentales
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="invisible absolute left-0 top-full mt-2 min-w-64 overflow-hidden rounded-2xl border border-white/10 bg-navy opacity-0 shadow-2xl shadow-deep/60 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+          {infra.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                'block px-4 py-3 text-sm font-semibold transition-colors',
+                current === link.key ? 'bg-wave text-deep' : 'hover:bg-ocean',
+              ]}
+              aria-current={current === link.key ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {links.slice(2).map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+            current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10',
+          ]}
+          aria-current={current === link.key ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 lg:hidden"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" class="hidden border-t-2 border-navy lg:hidden" aria-label="Navigation mobile">
+    {links.slice(0, 2).map((link) => (
+      <a href={link.href} class:list={['block px-6 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
+        {link.label}
+      </a>
+    ))}
+    <p class="px-6 pb-1 pt-3 text-xs font-bold uppercase tracking-widest text-wave">Infrastructures expérimentales</p>
+    {infra.map((link) => (
+      <a href={link.href} class:list={['block px-8 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
+        {link.label}
+      </a>
+    ))}
+    {links.slice(2).map((link) => (
+      <a href={link.href} class:list={['block px-6 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
+        {link.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>

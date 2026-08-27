@@ -1,0 +1,211 @@
+---
+import Base from '../layouts/Base.astro';
+
+const expertises = [
+  {
+    title: 'Acoustique sous-marine',
+    text: "Comprendre, analyser, améliorer l'acoustique des systèmes : couplage hydromécanique, traitement de signal, réduction de signature.",
+    color: 'bg-wave',
+  },
+  {
+    title: 'Optimisation de profils portants',
+    text: "Foils, dérives, safrans, pales d'hélice : l'expérimental pour aller plus loin que la simulation.",
+    color: 'bg-sand',
+  },
+  {
+    title: 'Traitement et analyse de données',
+    text: "Faire parler la donnée pour améliorer les systèmes physiques : AIS, radar, sonar, campagnes d'essais.",
+    color: 'bg-coral',
+  },
+  {
+    title: 'Stabilité',
+    text: "Étude de la stabilité des navires et systèmes marins avec un logiciel interne d'analyse de stabilité navale.",
+    color: 'bg-ocean',
+  },
+];
+
+const infrastructures = [
+  {
+    href: '/tunnel-hydrodynamique',
+    title: 'Tunnel hydrodynamique',
+    text: "Analyse des écoulements laminaires et turbulents, validation de modèles en mécanique des fluides, observation de la cavitation.",
+    image: '/images/tunnel-labo.jpg',
+    alt: "Le tunnel hydrodynamique de l'École Navale",
+  },
+  {
+    href: '/plan-deau-instrumente-en-detection-acoustique',
+    title: "Plan d'eau instrumenté",
+    text: "Essais en conditions réelles au fond de la rade de Brest, détection acoustique par fibre optique (technologie DAS).",
+    image: '/images/ecole-navale-aerien.jpg',
+    alt: "Vue aérienne du plan d'eau devant l'École Navale, rade de Brest",
+  },
+  {
+    href: '/banc-dessai-drone',
+    title: 'Hexapode et Mur de vent',
+    text: "Simulation de conditions de mer réalistes : vent jusqu'à 30 nds et mouvements 6 degrés de liberté.",
+    image: '/images/drone-mur-de-vent.png',
+    alt: "Drone en vol face au mur de vent",
+  },
+];
+
+const projets = [
+  {
+    href: '/projets',
+    title: 'Couplage hydroélastique',
+    text: "Anticipation des vibrations acoustiques d'un hydrofoil.",
+    image: '/images/modes-propres.png',
+    alt: "Modes propres d'un hydrofoil",
+  },
+  {
+    href: '/projets',
+    title: 'Validation CFD',
+    text: "Affinage de modèles numériques et prédiction de cavitation.",
+    image: '/images/cavitation-essai.png',
+    alt: 'Cavitation observée sur un profil en essai',
+  },
+  {
+    href: '/projets',
+    title: 'Signature acoustique',
+    text: "Identification de la signature d'un drone sous-marin par DAS.",
+    image: '/images/drone-sous-marin.jpg',
+    alt: 'Drone sous-marin en essai',
+  },
+  {
+    href: '/projets',
+    title: 'Stabilité hydrodynamique',
+    text: "Étude de stabilité d'une pompe flottante.",
+    image: '/images/pompe-flottante.png',
+    alt: "Pompe flottante sur plan d'eau",
+  },
+];
+---
+
+<Base
+  title="Bureau d'études en mécanique des fluides et acoustique sous-marine"
+  description="NeptEN : études théoriques, simulations numériques (CFD), essais expérimentaux et campagnes en milieu marin, adossés à l'institut de recherche de l'École Navale."
+  current="accueil"
+>
+  <!-- Hero -->
+  <section class="bg-linear-to-br from-deep via-navy to-ocean text-white">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:grid-cols-2 md:py-28">
+      <div>
+        <p class="mb-5 inline-block rounded-full bg-sand px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-deep">
+          Adossé à l'École Navale
+        </p>
+        <h1 class="text-4xl font-extrabold leading-tight md:text-5xl">
+          Bureau d'études en <span class="text-wave">mécanique des fluides</span> et
+          <span class="text-wave">acoustique sous-marine</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-foam/85">
+          Un accompagnement complet : études théoriques, simulations numériques (calcul, CFD),
+          études expérimentales avec des moyens uniques et essais en conditions réelles en milieu marin.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/expertise" class="rounded-full bg-wave px-7 py-3 font-bold text-deep transition-colors hover:bg-sand">
+            Nos expertises
+          </a>
+          <a href="/contact" class="rounded-full border-2 border-wave px-7 py-3 font-bold text-wave transition-colors hover:bg-wave hover:text-deep">
+            Nous contacter
+          </a>
+        </div>
+      </div>
+      <div class="hidden md:block">
+        <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/50">
+          <img
+            src="/images/drone-sous-marin.jpg"
+            alt="Drone sous-marin NeptEN en essai à la surface de l'eau"
+            class="block w-full object-cover"
+            width="800"
+            height="532"
+          />
+        </div>
+        <p class="mt-4 rounded-full bg-white/10 px-5 py-2.5 text-sm font-semibold text-foam">
+          Drone sous-marin développé en interne — essais en rade de Brest
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-ocean">Domaines d'expertise</p>
+          <h2 class="mt-2 text-3xl font-extrabold md:text-4xl">Coupler théorie et pratique</h2>
+        </div>
+        <a href="/expertise" class="rounded-full bg-deep px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ocean">
+          Toutes les expertises
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2">
+        {expertises.map((e) => (
+          <article class="rounded-3xl bg-foam p-8">
+            <span class:list={['block h-2 w-16 rounded-full', e.color]} aria-hidden="true"></span>
+            <h3 class="mt-5 text-xl font-extrabold">{e.title}</h3>
+            <p class="mt-3 leading-relaxed text-navy">{e.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructures -->
+  <section class="bg-linear-to-b from-navy to-deep text-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-wave">Moyens d'essais uniques</p>
+      <h2 class="mt-2 text-3xl font-extrabold md:text-4xl">Infrastructures expérimentales</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {infrastructures.map((i, idx) => (
+          <a href={i.href} class="group flex flex-col overflow-hidden rounded-3xl bg-deep transition duration-300 hover:-translate-y-1 hover:bg-ocean">
+            <img src={i.image} alt={i.alt} class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+            <div class="flex flex-1 flex-col p-8 pt-6">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-wave text-lg font-extrabold text-deep">
+              0{idx + 1}
+            </span>
+            <h3 class="mt-5 text-xl font-extrabold">{i.title}</h3>
+            <p class="mt-3 flex-1 leading-relaxed text-foam/80">{i.text}</p>
+            <span class="mt-6 text-sm font-bold text-wave group-hover:text-sand">Découvrir →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-ocean">Portfolio</p>
+          <h2 class="mt-2 text-3xl font-extrabold md:text-4xl">Quelques projets réalisés</h2>
+        </div>
+        <a href="/projets" class="rounded-full bg-deep px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ocean">
+          Tous les projets
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {projets.map((p) => (
+          <a href={p.href} class="group overflow-hidden rounded-3xl border border-deep/15 shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-deep hover:text-white hover:shadow-xl">
+            <img src={p.image} alt={p.alt} class="block aspect-[4/3] w-full object-cover" loading="lazy" />
+            <div class="p-6">
+              <h3 class="text-lg font-extrabold">{p.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy group-hover:text-foam/80">{p.text}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bandeau contact -->
+  <section class="bg-white px-4">
+    <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
+      <h2 class="text-2xl font-extrabold text-white md:text-3xl">Vous avez un projet ? Échangeons !</h2>
+      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+        Envoyer une demande
+      </a>
+    </div>
+  </section>
+</Base>

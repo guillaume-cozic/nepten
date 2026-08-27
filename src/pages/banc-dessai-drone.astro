@@ -1,0 +1,148 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const specsMur = [
+  { label: 'Section', value: '145 × 145 cm' },
+  { label: 'Vitesse maximale', value: '16 m/s (30 nds)' },
+  { label: 'Hauteur', value: '130 cm' },
+  { label: 'Accélération', value: '4 m/s²' },
+  { label: 'Décélération', value: '2,5 m/s²' },
+  { label: 'Turbulence', value: '5,4 % à 30 %' },
+];
+
+const specsHexapode = [
+  { label: 'Degrés de liberté', value: '6' },
+  { label: 'Course angulaire', value: '± 30°' },
+  { label: 'Vitesse maximale', value: '1 m/s' },
+  { label: 'Capacité de charge', value: '1 000 kg' },
+];
+---
+
+<Base
+  title="Hexapode et Mur de vent"
+  description="Mur de vent (324 cellules, 30 nds) et hexapode 6 degrés de liberté : des conditions de mer réalistes pour les essais d'apontage de drones, d'éoliennes et de plateformes."
+  current="hexapode"
+>
+  <PageHero
+    kicker="Infrastructure expérimentale"
+    title="Mur de vent & Hexapode"
+    intro="Ces deux équipements fonctionnent indépendamment ou conjointement. Le mur de vent génère un flux d'air horizontal, tandis que l'hexapode reproduit des mouvements multidirectionnels grâce à ses 6 degrés de liberté, simulant notamment les mouvements des navires."
+  />
+
+  <!-- Usages -->
+  <section class="bg-white">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 md:grid-cols-2">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-ocean">Conditions de mer réalistes</p>
+        <h2 class="mt-2 text-3xl font-extrabold">Des essais au plus proche du réel</h2>
+        <p class="mt-6 text-lg leading-relaxed text-navy">
+          Ensemble, ces équipements créent des conditions de mer réalistes pour réaliser différents essais :
+        </p>
+        <ul class="mt-6 space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 block h-3 w-3 shrink-0 rounded-full bg-wave" aria-hidden="true"></span>
+            <span class="font-semibold">Apontage de drones</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 block h-3 w-3 shrink-0 rounded-full bg-wave" aria-hidden="true"></span>
+            <span class="font-semibold">Test d'efficience énergétique d'éolienne</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 block h-3 w-3 shrink-0 rounded-full bg-wave" aria-hidden="true"></span>
+            <span class="font-semibold">Réactions humaines sur une plateforme en mouvement</span>
+          </li>
+        </ul>
+        <div class="mt-8 space-y-3">
+          <p class="rounded-2xl border-l-4 border-sand bg-foam p-4 font-semibold">
+            Mise en place simple offrant un coût avantageux comparé aux essais en soufflerie.
+          </p>
+          <p class="rounded-2xl border-l-4 border-sand bg-foam p-4 font-semibold">
+            Couplage de la simulation de vent avec les conditions de mer.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/30">
+          <img
+            src="/images/drone-mur-de-vent.png"
+            alt="Drone en vol stationnaire face au mur de vent, flux d'air matérialisé par la fumée"
+            class="block w-full object-cover"
+          />
+        </div>
+        <p class="mt-4 rounded-full bg-deep px-5 py-2.5 text-sm font-semibold text-foam">
+          Essai d'apontage de drone face au mur de vent — 324 cellules, flux aléatoire, rafales, turbulence
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs mur de vent -->
+  <section class="bg-linear-to-b from-navy to-deep text-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-wave">Fiche technique</p>
+      <h2 class="mt-2 text-3xl font-extrabold">Le mur de vent</h2>
+      <p class="mt-4 max-w-2xl leading-relaxed text-foam/85">
+        324 cellules permettent de générer un flux aléatoire, des rafales et de la turbulence.
+      </p>
+      <div class="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+        <figure class="rounded-2xl bg-white p-4">
+          <img
+            src="/images/mur-de-vent-schema.png"
+            alt="Schéma coté du mur de vent : 1453 mm de section, 1300 mm de hauteur"
+            class="mx-auto block max-h-96 w-auto"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-center text-sm font-bold text-navy">Schéma coté du mur de vent</figcaption>
+        </figure>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {specsMur.map((s) => (
+            <div class="rounded-2xl bg-deep p-7">
+              <p class="text-xs font-bold uppercase tracking-widest text-wave">{s.label}</p>
+              <p class="mt-3 text-2xl font-extrabold">{s.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs hexapode -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-ocean">Fiche technique</p>
+      <h2 class="mt-2 text-3xl font-extrabold">L'hexapode</h2>
+      <p class="mt-4 max-w-2xl leading-relaxed text-navy">
+        Une plateforme à 6 degrés de liberté reproduisant les mouvements des navires en mer.
+      </p>
+      <div class="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+        <figure class="rounded-2xl bg-foam p-4">
+          <img
+            src="/images/hexapode.png"
+            alt="L'hexapode : plateforme sur six vérins"
+            class="mx-auto block max-h-96 w-auto"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-center text-sm font-bold text-navy">L'hexapode et ses six vérins</figcaption>
+        </figure>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {specsHexapode.map((s) => (
+            <div class="rounded-2xl border border-deep/15 bg-white p-7 shadow-sm">
+              <p class="text-xs font-bold uppercase tracking-widest text-ocean">{s.label}</p>
+              <p class="mt-3 text-2xl font-extrabold">{s.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white px-4">
+    <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
+      <h2 class="text-2xl font-extrabold text-white md:text-3xl">Un essai à mettre en place ?</h2>
+      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+        Discutons de votre besoin
+      </a>
+    </div>
+  </section>
+</Base>

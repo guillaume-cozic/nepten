@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
 const { current = '' } = Astro.props;
 
 const links = [
@@ -19,14 +20,14 @@ const infraActive = infra.some((l) => l.key === current);
 
 <header class="sticky top-0 z-50 border-b border-white/10 bg-deep/90 text-white backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6">
-    <a href="/" class="flex items-center gap-3">
-      <img src="/images/logo-blanc.png" alt="NeptEN — Bureau d'études navales" class="h-20 w-auto" />
+    <a href={base + "/"} class="flex items-center gap-3">
+      <img src={base + "/images/logo-blanc.png"} alt="NeptEN — Bureau d'études navales" class="h-20 w-auto" />
     </a>
 
     <nav class="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
       {links.slice(0, 2).map((link) => (
         <a
-          href={link.href}
+          href={base + link.href}
           class:list={[
             'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
             current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10',
@@ -53,7 +54,7 @@ const infraActive = infra.some((l) => l.key === current);
         <div class="invisible absolute left-0 top-full mt-2 min-w-64 overflow-hidden rounded-2xl border border-white/10 bg-navy opacity-0 shadow-2xl shadow-deep/60 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
           {infra.map((link) => (
             <a
-              href={link.href}
+              href={base + link.href}
               class:list={[
                 'block px-4 py-3 text-sm font-semibold transition-colors',
                 current === link.key ? 'bg-wave text-deep' : 'hover:bg-ocean',
@@ -68,7 +69,7 @@ const infraActive = infra.some((l) => l.key === current);
 
       {links.slice(2).map((link) => (
         <a
-          href={link.href}
+          href={base + link.href}
           class:list={[
             'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
             current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10',
@@ -96,18 +97,18 @@ const infraActive = infra.some((l) => l.key === current);
 
   <nav id="mobile-menu" class="hidden border-t-2 border-navy lg:hidden" aria-label="Navigation mobile">
     {links.slice(0, 2).map((link) => (
-      <a href={link.href} class:list={['block px-6 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
+      <a href={base + link.href} class:list={['block px-6 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
         {link.label}
       </a>
     ))}
     <p class="px-6 pb-1 pt-3 text-xs font-bold uppercase tracking-widest text-wave">Infrastructures expérimentales</p>
     {infra.map((link) => (
-      <a href={link.href} class:list={['block px-8 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
+      <a href={base + link.href} class:list={['block px-8 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
         {link.label}
       </a>
     ))}
     {links.slice(2).map((link) => (
-      <a href={link.href} class:list={['block px-6 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
+      <a href={base + link.href} class:list={['block px-6 py-3 text-sm font-semibold', current === link.key ? 'bg-wave text-deep' : 'hover:bg-white/10']}>
         {link.label}
       </a>
     ))}

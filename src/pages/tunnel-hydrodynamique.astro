@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
 
 const capacites = [
   'Analyse de performances de profils portants',
@@ -56,14 +57,14 @@ const mesures = [
       <div class="space-y-6">
         <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/30">
           <img
-            src="/images/tunnel-labo.jpg"
+            src={base + "/images/tunnel-labo.jpg"}
             alt="Le tunnel hydrodynamique dans le laboratoire de l'École Navale"
             class="block w-full object-cover"
           />
         </div>
         <div class="rounded-3xl bg-foam p-6">
           <img
-            src="/images/tunnel-schema.png"
+            src={base + "/images/tunnel-schema.png"}
             alt="Schéma technique du tunnel hydrodynamique"
             class="block w-full"
             loading="lazy"
@@ -123,15 +124,15 @@ const mesures = [
       </div>
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         <figure class="overflow-hidden rounded-3xl bg-white shadow-sm">
-          <img src="/images/tunnel-veine.jpg" alt="La veine d'essai instrumentée avec le vibromètre laser" class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+          <img src={base + "/images/tunnel-veine.jpg"} alt="La veine d'essai instrumentée avec le vibromètre laser" class="block aspect-[3/2] w-full object-cover" loading="lazy" />
           <figcaption class="p-5 text-sm font-semibold text-navy">La veine d'essai instrumentée (vibromètre laser)</figcaption>
         </figure>
         <figure class="overflow-hidden rounded-3xl bg-white shadow-sm">
-          <img src="/images/cavitation-profil.png" alt="Cavitation observée sur un profil portant" class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+          <img src={base + "/images/cavitation-profil.png"} alt="Cavitation observée sur un profil portant" class="block aspect-[3/2] w-full object-cover" loading="lazy" />
           <figcaption class="p-5 text-sm font-semibold text-navy">Observation de la cavitation sur un profil</figcaption>
         </figure>
         <figure class="overflow-hidden rounded-3xl bg-white shadow-sm">
-          <img src="/images/profil-laser.png" alt="Profil portant éclairé par nappe laser pour mesure PIV" class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+          <img src={base + "/images/profil-laser.png"} alt="Profil portant éclairé par nappe laser pour mesure PIV" class="block aspect-[3/2] w-full object-cover" loading="lazy" />
           <figcaption class="p-5 text-sm font-semibold text-navy">Mesure PIV par nappe laser sur profil</figcaption>
         </figure>
       </div>
@@ -141,7 +142,7 @@ const mesures = [
   <section class="bg-white px-4">
     <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
       <h2 class="text-2xl font-extrabold text-white md:text-3xl">Besoin d'une campagne d'essais ?</h2>
-      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+      <a href={base + "/contact"} class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
         Parlons-en
       </a>
     </div>

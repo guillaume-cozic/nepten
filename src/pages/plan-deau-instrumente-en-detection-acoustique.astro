@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
 
 const atouts = [
   {
@@ -72,14 +73,14 @@ const atouts = [
       <div class="space-y-6">
         <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/50">
           <img
-            src="/images/ecole-navale-aerien.jpg"
+            src={base + "/images/ecole-navale-aerien.jpg"}
             alt="Vue aérienne de l'École Navale et du plan d'eau, rade de Brest"
             class="block w-full object-cover"
           />
         </div>
         <div class="rounded-3xl bg-deep p-4">
           <img
-            src="/images/detection-acoustique.png"
+            src={base + "/images/detection-acoustique.png"}
             alt="Principe de la détection acoustique sous-marine : source, hydrophone, traitement du signal, localisation"
             class="block w-full"
             loading="lazy"
@@ -98,7 +99,7 @@ const atouts = [
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {atouts.map((a, idx) => (
           <article class="overflow-hidden rounded-3xl bg-white shadow-sm">
-            <img src={a.image} alt={a.alt} class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+            <img src={base + a.image} alt={a.alt} class="block aspect-[3/2] w-full object-cover" loading="lazy" />
             <div class="p-8 pt-6">
               <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-wave font-extrabold text-deep">0{idx + 1}</span>
               <h3 class="mt-5 text-lg font-extrabold">{a.title}</h3>
@@ -113,7 +114,7 @@ const atouts = [
   <section class="bg-white px-4">
     <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
       <h2 class="text-2xl font-extrabold text-white md:text-3xl">Un équipement à tester en milieu marin ?</h2>
-      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+      <a href={base + "/contact"} class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
         Organisons une campagne
       </a>
     </div>

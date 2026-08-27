@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
 
 const expertises = [
   {
@@ -101,10 +102,10 @@ const projets = [
           études expérimentales avec des moyens uniques et essais en conditions réelles en milieu marin.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="/expertise" class="rounded-full bg-wave px-7 py-3 font-bold text-deep transition-colors hover:bg-sand">
+          <a href={base + "/expertise"} class="rounded-full bg-wave px-7 py-3 font-bold text-deep transition-colors hover:bg-sand">
             Nos expertises
           </a>
-          <a href="/contact" class="rounded-full border-2 border-wave px-7 py-3 font-bold text-wave transition-colors hover:bg-wave hover:text-deep">
+          <a href={base + "/contact"} class="rounded-full border-2 border-wave px-7 py-3 font-bold text-wave transition-colors hover:bg-wave hover:text-deep">
             Nous contacter
           </a>
         </div>
@@ -112,7 +113,7 @@ const projets = [
       <div class="hidden md:block">
         <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/50">
           <img
-            src="/images/drone-sous-marin.jpg"
+            src={base + "/images/drone-sous-marin.jpg"}
             alt="Drone sous-marin NeptEN en essai à la surface de l'eau"
             class="block w-full object-cover"
             width="800"
@@ -134,7 +135,7 @@ const projets = [
           <p class="text-xs font-bold uppercase tracking-widest text-ocean">Domaines d'expertise</p>
           <h2 class="mt-2 text-3xl font-extrabold md:text-4xl">Coupler théorie et pratique</h2>
         </div>
-        <a href="/expertise" class="rounded-full bg-deep px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ocean">
+        <a href={base + "/expertise"} class="rounded-full bg-deep px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ocean">
           Toutes les expertises
         </a>
       </div>
@@ -157,8 +158,8 @@ const projets = [
       <h2 class="mt-2 text-3xl font-extrabold md:text-4xl">Infrastructures expérimentales</h2>
       <div class="mt-10 grid gap-6 md:grid-cols-3">
         {infrastructures.map((i, idx) => (
-          <a href={i.href} class="group flex flex-col overflow-hidden rounded-3xl bg-deep transition duration-300 hover:-translate-y-1 hover:bg-ocean">
-            <img src={i.image} alt={i.alt} class="block aspect-[3/2] w-full object-cover" loading="lazy" />
+          <a href={base + i.href} class="group flex flex-col overflow-hidden rounded-3xl bg-deep transition duration-300 hover:-translate-y-1 hover:bg-ocean">
+            <img src={base + i.image} alt={i.alt} class="block aspect-[3/2] w-full object-cover" loading="lazy" />
             <div class="flex flex-1 flex-col p-8 pt-6">
             <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-wave text-lg font-extrabold text-deep">
               0{idx + 1}
@@ -181,14 +182,14 @@ const projets = [
           <p class="text-xs font-bold uppercase tracking-widest text-ocean">Portfolio</p>
           <h2 class="mt-2 text-3xl font-extrabold md:text-4xl">Quelques projets réalisés</h2>
         </div>
-        <a href="/projets" class="rounded-full bg-deep px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ocean">
+        <a href={base + "/projets"} class="rounded-full bg-deep px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-ocean">
           Tous les projets
         </a>
       </div>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {projets.map((p) => (
-          <a href={p.href} class="group overflow-hidden rounded-3xl border border-deep/15 shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-deep hover:text-white hover:shadow-xl">
-            <img src={p.image} alt={p.alt} class="block aspect-[4/3] w-full object-cover" loading="lazy" />
+          <a href={base + p.href} class="group overflow-hidden rounded-3xl border border-deep/15 shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-deep hover:text-white hover:shadow-xl">
+            <img src={base + p.image} alt={p.alt} class="block aspect-[4/3] w-full object-cover" loading="lazy" />
             <div class="p-6">
               <h3 class="text-lg font-extrabold">{p.title}</h3>
               <p class="mt-3 text-sm leading-relaxed text-navy group-hover:text-foam/80">{p.text}</p>
@@ -203,7 +204,7 @@ const projets = [
   <section class="bg-white px-4">
     <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
       <h2 class="text-2xl font-extrabold text-white md:text-3xl">Vous avez un projet ? Échangeons !</h2>
-      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+      <a href={base + "/contact"} class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
         Envoyer une demande
       </a>
     </div>

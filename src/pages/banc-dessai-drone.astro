@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
 
 const specsMur = [
   { label: 'Section', value: '145 × 145 cm' },
@@ -65,7 +66,7 @@ const specsHexapode = [
       <div>
         <div class="overflow-hidden rounded-3xl shadow-2xl shadow-deep/30">
           <img
-            src="/images/drone-mur-de-vent.png"
+            src={base + "/images/drone-mur-de-vent.png"}
             alt="Drone en vol stationnaire face au mur de vent, flux d'air matérialisé par la fumée"
             class="block w-full object-cover"
           />
@@ -88,7 +89,7 @@ const specsHexapode = [
       <div class="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
         <figure class="rounded-2xl bg-white p-4">
           <img
-            src="/images/mur-de-vent-schema.png"
+            src={base + "/images/mur-de-vent-schema.png"}
             alt="Schéma coté du mur de vent : 1453 mm de section, 1300 mm de hauteur"
             class="mx-auto block max-h-96 w-auto"
             loading="lazy"
@@ -118,7 +119,7 @@ const specsHexapode = [
       <div class="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
         <figure class="rounded-2xl bg-foam p-4">
           <img
-            src="/images/hexapode.png"
+            src={base + "/images/hexapode.png"}
             alt="L'hexapode : plateforme sur six vérins"
             class="mx-auto block max-h-96 w-auto"
             loading="lazy"
@@ -140,7 +141,7 @@ const specsHexapode = [
   <section class="bg-white px-4">
     <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
       <h2 class="text-2xl font-extrabold text-white md:text-3xl">Un essai à mettre en place ?</h2>
-      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+      <a href={base + "/contact"} class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
         Discutons de votre besoin
       </a>
     </div>

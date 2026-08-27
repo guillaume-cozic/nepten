@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL;
 
 const expertises = [
   {
@@ -91,7 +92,7 @@ const expertises = [
             </ul>
           </div>
           <div class="rounded-3xl bg-foam p-6 md:p-8">
-            <img src={e.image} alt={e.imageAlt} class="block w-full rounded-2xl object-cover" loading="lazy" />
+            <img src={base + e.image} alt={e.imageAlt} class="block w-full rounded-2xl object-cover" loading="lazy" />
             <p class="mt-3 text-sm font-semibold text-ocean">{e.caption}</p>
             <p class="mt-5 border-t border-deep/15 pt-5 text-xl font-extrabold leading-snug">« {e.tagline} »</p>
           </div>
@@ -103,7 +104,7 @@ const expertises = [
   <section class="bg-white px-4">
     <div class="mx-auto my-20 flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-[2.5rem] bg-linear-to-r from-ocean to-deep px-8 py-12 sm:px-12">
       <h2 class="text-2xl font-extrabold text-white md:text-3xl">Une problématique à résoudre ?</h2>
-      <a href="/contact" class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
+      <a href={base + "/contact"} class="rounded-full bg-wave px-8 py-3.5 font-bold text-deep transition-colors hover:bg-sand">
         Contactez nos experts
       </a>
     </div>

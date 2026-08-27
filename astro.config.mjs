@@ -2,8 +2,12 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+// Déploiement GitHub Pages : DEPLOY_TARGET=gh → site servi sous /nepten/
+const isGithubPages = process.env.DEPLOY_TARGET === 'gh';
+
 export default defineConfig({
-  site: 'https://www.nepten.fr',
+  site: isGithubPages ? 'https://guillaume-cozic.github.io' : 'https://www.nepten.fr',
+  base: isGithubPages ? '/nepten' : '/',
   vite: {
     plugins: [tailwindcss()],
   },
